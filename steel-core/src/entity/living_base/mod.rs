@@ -554,7 +554,7 @@ impl Default for LivingSwingState {
     }
 }
 
-/// Vanilla active item-use state stored on `LivingEntity`.
+/// Active item-use state stored on `LivingEntity`, with Steel-local session identity.
 #[derive(Debug, Clone, Copy, PartialEq)]
 pub struct ActiveItemUseState {
     hand: InteractionHand,
@@ -601,7 +601,7 @@ impl ActiveItemUseState {
         self.remaining_ticks
     }
 
-    /// Returns the session ID of the use.
+    /// Returns the per-entity ID used to distinguish restarted use sessions.
     #[must_use]
     pub const fn session_id(&self) -> u64 {
         self.session_id
